@@ -1,0 +1,346 @@
+---
+name: Gerard
+surname: Chung
+position: "Assistant Professor"
+address: "Social Work, National University of Singapore"
+#phone: +1 22 3333 4444
+www: gerardchung.com
+email: gerard@nus.edu.sg
+#twitter: "GerardChung"
+github: gerardchung
+researchgate: Gerard_Chung
+linkedin: gerardchung
+date: "`r format(Sys.time(), '%B %Y')`"
+output: vitae::awesomecv  # moderncv hyndman awesomecv
+headcolor: 228b22   # https://www.colorhexa.com/     (228b22) (ff9900) (339900) (6699ff)
+#bibliography: gerard.bib
+#bibliography_published: "Published.bib"
+#nocite: '@*' # don't change this if you want to print out all the refs
+
+# this code belows is needed so that the xls tables will work for longtable = T
+header-includes:
+- \usepackage{longtable}
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+library(readr)
+library(knitr)
+library(float)
+library(kableExtra)
+library(ggplot2)
+
+options(encoding = "UTF-8")
+#options(tinytex.verbose = TRUE)
+options(knitr.kable.NA = '')
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+
+```
+
+
+# Education
+
+```{r}
+library(tibble)
+tribble(
+  ~ Degree, ~ Year, ~ Institution, ~ Where,
+  "PHD SOCIAL WORK", "2021", "University of North Carolina at Chapel Hill", "USA",
+  "Master of Social Work", "2016", "National University of Singapore", "Singapore",
+  "Bachelor of Arts (Social Work)", "2007", "National University of Singapore", "Singapore",
+  "Graduate Diploma in Solution-focused Brief Therapy", "2011", "Edith Cowan University", "Australia"
+) %>% 
+  detailed_entries(Degree, Year, Institution, Where)
+```
+
+# Work Experiences
+
+
+```{r}
+tribble(
+  ~Year, ~Name, ~Duty,
+  '2023 - ongoing', "Assistant Professor, Social Work, NUS","Research, Teaching",
+  '2022 - 2023', "Research Fellow, A*STAR, Singapore","Data Analysis, Research, Mentorship",
+  '2021 - 2023', "Research Fellow, Social Service Research Centre, NUS","Research consultancy, Data analyst, Mentorship, Training",
+  '2014 - 2017', "Research manager 'Strengthening Families Together Pilot', NUS","Project manager, Data manager, Data Analyst, Training",
+  '2008 - 2013', "Senior Social Worker, Fei Yue Family Service Centre & Child Abuse Specialist Centre","Case management; Groupwork; Clinical supervision; Training",
+  
+  
+  
+) %>% 
+  detailed_entries(
+    where = Year,
+    with = Name, 
+    what = Duty
+  )
+```
+
+
+
+
+# Grants, Awards, Selections, and Fellowships
+
+```{r}
+tribble(
+  ~Year, ~Name, ~Institution,
+  2022, "Inaugural Summer Institutes of Computational Social Science in Singapore", "SICSS",
+  2021, "Injury Violence & Prevention Fellowship (US$3,000)", "Injury Prevention Research Center, UNC",
+  2021, "Ee Peng Liang Scholar", "Ee Peng Liang Memorial Fund, NUS",
+  2020, "Injury Violence & Prevention Fellowship (US$3,000)", "Injury Prevention Research Center, UNC",
+  2017, "Merit Assistantship (4 years funding)", "Graduate school, UNC",
+  2014, "Alice Goh Scholarship", "NUS",
+) %>% 
+  detailed_entries(
+    where = Year,
+    with = Name, 
+    what = Institution
+  )
+
+```
+
+
+
+# Publications (First author) 
+
+```{r pub}
+
+pub <- read_csv("pub_published_table.csv", skip_empty_rows = TRUE)
+pub <- pub %>%
+  arrange(desc(year))
+knitr::kable(pub, "latex", booktabs = TRUE,
+             col.names = c("Authors", "Year", "Title", "Journal"),
+             longtable = TRUE) %>%
+  kableExtra::column_spec(1, width = "5cm") %>%
+  kableExtra::column_spec(2, width = ".5cm") %>%
+  kableExtra::column_spec(3, width = "7cm") %>%
+  kableExtra::column_spec(4, width = "4cm") %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::kable_styling(latex_options = c("scale_down", "repeat_header"),
+                            font_size = 9)
+
+```
+\newpage
+# Publications (Co-author) 
+
+```{r coauthor}
+
+pub <- read_csv("pub_coauthor_table.csv", skip_empty_rows = TRUE)
+pub <- pub %>%
+  arrange(desc(year))
+knitr::kable(pub, "latex", booktabs = TRUE,
+             col.names = c("Authors", "Year", "Title", "Journal"),
+             longtable = TRUE) %>%
+  kableExtra::column_spec(1, width = "5cm") %>%
+  kableExtra::column_spec(2, width = ".5cm") %>%
+  kableExtra::column_spec(3, width = "7cm") %>%
+  kableExtra::column_spec(4, width = "4cm") %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::kable_styling(latex_options = c("scale_down", "repeat_header"),
+                            font_size = 9)
+
+```
+# Publications (In Review) 
+
+```{r In review}
+
+pub <- read_csv("pub_inreview_table.csv", skip_empty_rows = TRUE)
+pub <- pub %>%
+  arrange(desc(year))
+knitr::kable(pub, "latex", booktabs = TRUE,
+             col.names = c("Authors", "Year", "Title", "Journal"),
+             longtable = TRUE) %>%
+  kableExtra::column_spec(1, width = "5cm") %>%
+  kableExtra::column_spec(2, width = ".5cm") %>%
+  kableExtra::column_spec(3, width = "7cm") %>%
+  kableExtra::column_spec(4, width = "4cm") %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::kable_styling(latex_options = c("scale_down", "repeat_header"),
+                            font_size = 9)
+
+```
+
+
+
+# Research Projects
+
+## Ongoing Projects 
+
+* In-Work Poverty and the Challenges of Getting By Among the Young
+    - Co-PI/Social Science Thematic Research Grant (Type B)
+    - Website: https://fass.nus.edu.sg/ssr/research-projects/in-work-poverty-challenges-getting-by-among-the-young/ 
+ 
+<br>
+
+* Building science and tech tools for text-based counseling
+    - PI, in collaboration with Fei Yue, Seed Grant 
+   
+<br>
+
+* DADSCAN (Dads Advancing Data for the development of Singaporean Children and Adolescents Now!)
+  - Collaborator, A*STAR 
+  - www.dadscan.org
+
+## Summary of Research Projects
+
+```{r researchprojects}
+
+res_proj <- read_csv("research_proj.csv", skip_empty_rows = TRUE)
+res_proj <- res_proj %>%
+ # mutate(amount = scales::dollar(amount, prefix = "£")) %>%
+  arrange(desc(year))
+knitr::kable(res_proj, "latex", booktabs = TRUE,
+             col.names = c("Funder", "Project", "Year", "Role"),
+             longtable = TRUE) %>%
+  kableExtra::column_spec(1, width = "2.0cm") %>%
+  kableExtra::column_spec(2, width = "9cm") %>%
+  kableExtra::column_spec(3, width = "1.5cm") %>%
+  kableExtra::column_spec(4, width = "4cm") %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::kable_styling(latex_options = c("scale_down", "repeat_header"),
+                            font_size = 10)
+
+```
+
+# Presentations  
+
+```{r}
+library(dplyr)
+bibliography_entries("presentations/presentations.bib") 
+
+```
+
+# News/Media   
+
+```{r}
+library(dplyr)
+bibliography_entries("news_media/news_media.bib") 
+
+```
+
+
+# Reports/Articles  
+
+```{r}
+library(dplyr)
+bibliography_entries("reports_articles/reports_articles.bib") 
+
+```
+
+# Teaching Experience
+
+## Primary Instructor
+
+```{r}
+tribble(
+  ~Year, ~Name, ~Duty,
+  '06/2023 - 12/2023', "SW4103 Advanced Research & Evaluation (NUS)","Masters in SW class;Teaching", 
+  '06/2023 - 12/2023', "SWM5117A Practive Research Capstone 1 (NUS)","Teaching; Mentoring", 
+  '01/2023 - 04/2023', "Quantitative Research Methods (SSR)","Teaching", 
+  '02/2022 - 04/2022', "Mentoring in Research Skills (SSR)","Small group mentoring; Teaching", 
+  '01/2022 - 01/2022', "Research Skills for Social Service Professionals (SSR)","Course design; lectures", 
+  '09/2014 - 09/2014', "Financial Cases: Assessment, case management, and intervention (Academy of Human Development Singapore)","Course design; lectures", 
+) %>% 
+  detailed_entries(
+    where = Year,
+    with = Name, 
+    what = Duty
+  )
+```
+## Graduate Student Instructor
+
+```{r}
+tribble(
+  ~Year, ~Name, ~Duty,
+  '01/2021 - 05/2021', "SOWO 918 : Applied Regression Analysis and Generalized Linear Models", "Two Guest Lectures; Grading student essays; office hours; supervising student research projects",
+  '08/2020 - 12/2020', "SOWO 911 :  Introduction to Social Statistics and Data Analysis","Lectures; Grading student essays & assignments; office hours; supervising student research projects",
+  '08/2019 - 12/2019', "SOWO 911 :  Introduction to Social Statistics and Data Analysis","Grading student essays & assignments; office hours; supervising student research projects",
+  '01/2019 - 05/2019', "SOWO 500: Human Development in Context I: Infancy to Adolescence","Two Lectures;  Grading assignments and exams; office hours",
+  '01/2018 - 06/2018', "SOWO 800 : Evaluation of Social Work Intervention","Grading student essays; office hours; supervising student research projects"
+) %>% 
+  detailed_entries(
+    where = Year,
+    with = Name, 
+    what = Duty
+  )
+```
+
+# Professional Service/Consultancy
+
+## Research Consultancy/Collaborations
+
+* Kampong Kapor FSC (2023)
+    - Data curation and Dashboard 
+
+<br>    
+
+* Fei Yue Community Services (2021-2023)
+    - Create SOP for Data Management and Quality for Research Team
+    - NLP work on Adoption Assessment Reports
+    
+<br>
+* Blended Concepts (2023)
+    - Development of Logic Model 
+* The Samaritans of Singapore SOS (2017-2018)
+* Agency for Integrated Care AIC (2017-2018)
+
+
+## Ad Hoc Reviewer
+
+* Journal of Child & Family Studies
+* Journal of Family Violence 
+* Child & Family Social Work
+* Family Relations
+* Interpersona
+* Current Psychology
+* Infancy
+* Canadian Journal of Community Mental Health
+* Child & Youth Service Review
+* Family Relations
+* Asia Pacific Journal of Social Work
+* British Journal of Psychology
+* Scandinavian Journal of Psychology
+* Journal of Family Issues
+
+
+## Editorial
+
+* Editorial assistant, Asia Pacific Journal of Social Work and Dev (2013-2017)
+
+
+# Social Work Practice Experience
+
+
+```{r}
+tribble(
+  ~Year, ~Name, ~Duty,
+  '09/2008 - 09/2013', "Senior Social Worker, Fei Yue Family Service Centre & Child Abuse Specialist Centre","Case management; Groupwork; Clinical supervision; Training"
+) %>% 
+  detailed_entries(
+    where = Year,
+    with = Name, 
+    what = Duty
+  )
+```
+
+
+
+# References
+
+```{r}
+tribble(
+  ~Name, ~Title, ~Contact,
+  'Mimi Chapman, Ph.D.',"Associate Dean for Doctoral Education; Frank A. Daniels Distinguished Professor for Human Service Policy Information, Chair of the UNC Chapel Hill Faculty, University of North Carolina at Chapel Hill", "mimi@email.unc.edu",
+  'Chen Ding-Geng, Ph.D.',"Kuralt Distinguished Professor, School of Social Work; Professor in Biostatistics, Gillings School of Global Public Health, University of North Carolina at Chapel Hill", "dinchen@email.unc.edu",
+  'David Ansong, Ph.D.',"Kuralt Early Career Distinguished Associate Professor; Faculty Fellow at Global Social Development Innovations, University of North Carolina at Chapel Hill", "ansong@email.unc.edu",
+  'Paul Lanier, Ph.D.',"Kuralt Distinguished Associate Professor; Associate director, Jordan Institute of Families, University of North Carolina at Chapel Hill", "planier@email.unc.edu",
+
+) %>% 
+  detailed_entries(
+    where = Contact,
+    with = Name, 
+    what = Title
+  )
+
+
